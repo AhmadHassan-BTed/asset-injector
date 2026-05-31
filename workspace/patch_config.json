@@ -1,4 +1,4 @@
 {
   "patch_character_selection": true,
-  "patch_in_game_models": false
+  "patch_in_game_models": true
 }
