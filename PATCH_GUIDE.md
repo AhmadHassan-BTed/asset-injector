@@ -11,39 +11,38 @@ This guide describes how to patch and restore original character models and cust
 
 *(Alternatively, if you already have clean unpatched copies of these ISOs, you can place them manually into the `iso/unpatched/` folder under these exact names).*
 
-## 📁 Custom Assets Placement (Simplified Assets Directory)
+## 📁 Custom Assets & Baseline Merging Strategy
 
-The pipeline organizes assets under a single parent **`assets/`** directory to keep baseline resources and custom overlays clean and distinct:
+The pipeline uses the **Frontiers expansion assets** as the primary baseline to preserve Frontiers' high-quality textures, interfaces, customization menus, face databases, and character select screens.
 
-* **`assets/Vanilla/`**: Contains the baseline Vanilla game assets (character models, custom select files, etc.).
-* **`assets/Frontiers/`**: Contains baseline Frontiers assets or your custom overlay patches.
+* **`assets/Frontiers/`**: Contains the baseline Frontiers assets extracted in Step 2. These serve as the master baseline to ensure Frontiers' look and textures are fully preserved.
+* **`assets/Vanilla/`**: Contains original Vanilla character databases. The 11 classic character models (Barbarian, Dark Elf, Dwarf, Elf, Erudite, Gnome, Halfling, Human-Eastern, Human-Western, Ogre, and Troll) are surgically grafted into the Frontiers database during Step 1, ensuring all 22 male/female versions are inherited cleanly without breaking Frontiers' layout or interface.
 
 ### Directory Structure & File Naming:
-Within each folder under `assets/`, files must be structured as follows:
+Within `assets/Frontiers/` (baseline) and `assets/Vanilla/` (sources), files reside in these locations:
 * **`data/`**:
-  - `CHAR.ESF` — Character model database.
-  - `CHARCUST.ESF` — Character customizer database.
+  - `CHAR.ESF` — Main character model database (the surgically grafted hybrid model database is fully preserved in the ISO).
   
 * **`data2/`**:
-  - `CHARCUST.CSF` — Compressed character customizer database.
+  - `CHARCUST.CSF` — Compressed character customization database.
   - `CHARFACE.CSF` — Compressed character face database.
   - `CHARFACE.ESF` — Character face database.
   - `CHARSEL1.CSF`, `CHARSEL2.CSF`, `CHARSEL3.CSF`, `CHARSEL4.CSF` — Compressed character select files.
 
-*(Note: Baseline assets are preloaded in `assets/Vanilla/`. Step 2 extracts clean baseline files into `assets/Frontiers/` so you can customize them).*
+*(Note: Baseline Frontiers assets are extracted in Step 2 into `assets/Frontiers/` so that they can be used directly for character select interfaces).*
 
 ## ⚙️ Running the 4-Step Automated Patch Pipeline
 
 To patch the game ISO and inject custom assets, run the following four batch scripts in order:
 
 ### 1️⃣ Step 1: Create Initial Frontiers Patched ISO (`steps/step1_create_patched_iso.bat`)
-- **What it does**: Re-compiles the 11 native character model databases (Vanilla geometry grafted onto Frontiers skeleton) and repacks them into a baseline frontiers ISO (`iso/patched/EQOA_Frontiers_Patched.iso`).
+- **What it does**: Re-compiles the 11 native character model databases (Vanilla geometry grafted onto Frontiers skeleton for both male and female versions, 22 in total) and repacks them into a baseline frontiers ISO (`iso/patched/EQOA_Frontiers_Patched.iso`).
 
 ### 2️⃣ Step 2: Extract Baseline Frontiers Assets (`steps/step2_extract_assets.bat`)
-- **What it does**: Automatically extracts baseline Frontiers CSF/ESF database files directly from your clean unpatched Frontiers ISO and saves them into the `assets/Frontiers/` directory. This is useful for customizing or referencing raw Frontiers assets.
+- **What it does**: Automatically extracts baseline Frontiers CSF/ESF database files directly from your clean unpatched Frontiers ISO and saves them into the `assets/Frontiers/` directory.
 
 ### 3️⃣ Step 3: Merge Assets (`steps/step3_merge_assets.bat`)
-- **What it does**: Merges baseline Vanilla assets from `assets/Vanilla/` and custom Frontiers overlays from `assets/Frontiers/` into a temporary `assets/merged-assets/` folder. (Custom Frontiers files take priority and overwrite matching Vanilla files).
+- **What it does**: Copies the baseline Frontiers files from `assets/Frontiers/` into `assets/merged-assets/` (excluding `CHAR.ESF` to preserve the surgically patched database) and overlays Vanilla's `CHARSEL1.CSF`...`CHARSEL4.CSF` select screen database files. This inherits the 11 classic Vanilla character models (22 select screen versions) while keeping Frontiers' original customization databases, faces, and UI textures intact.
 
 ### 4️⃣ Step 4: Inject Assets (`steps/step4_inject_assets.bat`)
 - **What it does**: Forcefully terminates any running `pcsx2-qt.exe` process (to prevent file lock conflicts), copies combined assets from `assets/merged-assets/` into the workspace folders, and surgically patches them in-place directly into the patched ISO. It concludes by running a high-integrity verification suite.

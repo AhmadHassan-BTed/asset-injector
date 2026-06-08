@@ -1,1 +1,0 @@
-merchantDialogue = "I have da fine metals you need. Take a look?"

@@ -1,1 +1,0 @@
-merchantDialogue = "Step right up. I have the finest chainmail in all the land."

@@ -1,1 +1,0 @@
-merchantDialogue = "If troll tinks stabbing frogloks is best, troll buys my spears and daggers. You look here!"

@@ -1,1 +1,0 @@
-merchantDialogue = "What better way to get ready than with a new weapon. Basic weapons but they work and if you lose it…they're cheap to replace."

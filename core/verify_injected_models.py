@@ -58,7 +58,7 @@ def main():
     print("\n=== Verifying Injected Models in FINAL_CHAR_MERGED.ESF ===")
     for idx, t in enumerate(targets):
         h = int(t['expansion_hash'], 16)
-        print(f"\n[{idx+1}/11] Model 0x{h:08X} (Expansion Index {t['expansion_index']}):")
+        print(f"\n[{idx+1}/{len(targets)}] Model 0x{h:08X} (Expansion Index {t['expansion_index']}):")
         if h not in pt_map:
             print("  [-] NOT FOUND in pointer table!")
             continue

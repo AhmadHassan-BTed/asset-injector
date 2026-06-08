@@ -1,1 +1,0 @@
-merchantDialogue = "My cleric spells require an advanced understanding of defense and recovery to be of use."

@@ -1,5 +1,0 @@
-function event_say()
-diagOptions = {}
-    npcDialogue = "I've tried singing and dancing at the Qeynos Theater, but they told me I had no rhythm and laughed. I tried to join the Church of Marr, but they told me I was too filthy. I am not strong or brave enough to be a warrior at the Qeynos Guard. I have no magic skills, I would be useless at the Anagogical Order. I am no good at picking pockets, I can't even pick yours...I just tried. I think It is time for me to leave this town. The other day I heard a rumor...to the south, just outside the city of Highbourne, near the water is a tunnel. It is called \"The Hidden\", and few know about it...they accept people like me. They may be able to give me a purpose...a power...a way to take control of my destiny. I think I know what I have to do. Thank you for listening, playerName."
-SendDialogue(mySession, npcDialogue, diagOptions)
-end

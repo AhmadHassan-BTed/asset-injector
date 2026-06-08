@@ -21,14 +21,17 @@ This checklist tracks high-level milestones and architectural deliverables requi
 - [x] Recursively update hierarchical node sizes and rebuild node buffers
 - [x] Save hybrid model `.bin` payloads
 
-- [x] **Phase 3: Database Merging & ISO Repacking**
+- [x] **Phase 3: Database Merging, Asset Merging & ISO Repacking**
 - [x] Run `esf_rebuilder.py` to merge the 11 upgraded `.bin` payloads into frontiers template
 - [x] Run `repack_iso.py` to append the merged `CHAR.ESF` and patch ISO 9660 LBA/sizes
 - [x] Run `patch_udf_char_esf_v2.py` with dynamic logical LBA calculation (`1,492,090`) and tag checksum computation
+- [ ] Refactor `core/merge_assets.py` to copy Frontiers assets as baseline, exclude `CHAR.ESF` from copying, and overlay Vanilla's `CHARSEL1.CSF`...`CHARSEL4.CSF` select database files
 
 - [x] **Phase 4: Robust Verification & Emulation Validation**
 - [x] Validate ESF database structure has 0 parsing anomalies (using `verify_injected_models.py`)
 - [x] Validate ISO file descriptors and binary sector matches (using `verify_final_patch.py` and `verify_final_iso.py`)
+- [ ] Verify character select screen preserves Frontiers textures and looks
+- [ ] Verify that only the 11 character models in their male/female versions (22 in total) are inherited from Vanilla
 - [ ] Close emulator and verify character model visibility in-game _(Pending Phase 6 Manifest Alignment)_
 
 - [x] **Phase 5: ISO Storage Reorganization & Path Restructuring**

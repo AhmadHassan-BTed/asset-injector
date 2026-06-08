@@ -1,1 +1,0 @@
-merchantDialogue = "I sell the finest steel weapons you'll find in Rivervale. Take yer time but ask before ya touch or you'll be draw'n back a nub."

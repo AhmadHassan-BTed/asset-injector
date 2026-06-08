@@ -1,1 +1,0 @@
-merchantDialogue = "I've got some poles and bait to sell to you!! Speak with Yarnning if you'd like to catch a ship somewhere!!"

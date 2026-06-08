@@ -1,1 +1,0 @@
-merchantDialogue = "There is a subtle art to keeping your fellow adventures alive and healthy. My spells will help you on your path to such feats."

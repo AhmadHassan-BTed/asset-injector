@@ -1,1 +1,0 @@
-merchantDialogue = "Woolen armor for sale! Custom tailoring. The protection you need at ridiculous prices!"

@@ -1,1 +1,0 @@
-merchantDialogue = "Before you leave the city, yer gonna need something better than that there weapon. Take a look at my stock, may save yer life."

@@ -1,1 +1,0 @@
-merchantDialogue = "This gossamer armor is of the highest quality. Would you like to browse?"

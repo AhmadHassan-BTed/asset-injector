@@ -1,0 +1,57 @@
+[submodule "EQOA_REPO_COLLECTION/ben_eqoa_c_server"]
+	path = EQOA_REPO_COLLECTION/ben_eqoa_c_server
+	url = https://github.com/benturi/ben_eqoa_c_server.git
+[submodule "EQOA_REPO_COLLECTION/EQOA_Addons"]
+	path = EQOA_REPO_COLLECTION/EQOA_Addons
+	url = https://github.com/rosyfiles/EQOA_Addons.git
+[submodule "EQOA_REPO_COLLECTION/EQOA_Creator"]
+	path = EQOA_REPO_COLLECTION/EQOA_Creator
+	url = https://github.com/devin103/EQOA_Creator.git
+[submodule "EQOA_REPO_COLLECTION/EQOA-Data"]
+	path = EQOA_REPO_COLLECTION/EQOA-Data
+	url = https://github.com/Jadiction/EQOA-Data.git
+[submodule "EQOA_REPO_COLLECTION/eqoa-esf-tools"]
+	path = EQOA_REPO_COLLECTION/eqoa-esf-tools
+	url = https://github.com/DabDavis/eqoa-esf-tools.git
+[submodule "EQOA_REPO_COLLECTION/EQOA-Frontiers-ISO-Patch"]
+	path = EQOA_REPO_COLLECTION/EQOA-Frontiers-ISO-Patch
+	url = https://github.com/devin103/EQOA-Frontiers-ISO-Patch.git
+[submodule "EQOA_REPO_COLLECTION/EQOA-Prototype-Server"]
+	path = EQOA_REPO_COLLECTION/EQOA-Prototype-Server
+	url = https://github.com/devin103/EQOA-Prototype-Server.git
+[submodule "EQOA_REPO_COLLECTION/EQOA-Ranix"]
+	path = EQOA_REPO_COLLECTION/EQOA-Ranix
+	url = https://github.com/userrnx/EQOA-Ranix.git
+[submodule "EQOA_REPO_COLLECTION/EQOA-server"]
+	path = EQOA_REPO_COLLECTION/EQOA-server
+	url = https://github.com/joukop/EQOA-server.git
+[submodule "EQOA_REPO_COLLECTION/eqoa.github.io"]
+	path = EQOA_REPO_COLLECTION/eqoa.github.io
+	url = https://github.com/eqoa/eqoa.github.io.git
+[submodule "EQOA_REPO_COLLECTION/EQOAGameServer"]
+	path = EQOA_REPO_COLLECTION/EQOAGameServer
+	url = https://github.com/EQOAReturnHome/EQOAGameServer.git
+[submodule "EQOA_REPO_COLLECTION/eqoazyc-api"]
+	path = EQOA_REPO_COLLECTION/eqoazyc-api
+	url = https://github.com/Dexr1te/eqoazyc-api.git
+[submodule "EQOA_REPO_COLLECTION/Hagley"]
+	path = EQOA_REPO_COLLECTION/Hagley
+	url = https://github.com/Faxonation2/Hagley.git
+[submodule "EQOA_REPO_COLLECTION/Kairen"]
+	path = EQOA_REPO_COLLECTION/Kairen
+	url = https://github.com/Randall-Adams/Kairen.git
+[submodule "EQOA_REPO_COLLECTION/OpenEQOA"]
+	path = EQOA_REPO_COLLECTION/OpenEQOA
+	url = https://github.com/unenergizer/OpenEQOA.git
+[submodule "EQOA_REPO_COLLECTION/tech-eqoakv"]
+	path = EQOA_REPO_COLLECTION/tech-eqoakv
+	url = https://github.com/trevormorg/tech-eqoakv.git
+[submodule "EQOA_REPO_COLLECTION/eqoa"]
+	path = EQOA_REPO_COLLECTION/eqoa
+	url = https://github.com/skulkingfox/eqoa.git
+[submodule "EQOA_REPO_COLLECTION/eqoa-pipeline"]
+	path = EQOA_REPO_COLLECTION/eqoa-pipeline
+	url = https://github.com/DabDavis/eqoa-pipeline.git
+[submodule "EQOA_REPO_COLLECTION/ESF-file-format"]
+	path = EQOA_REPO_COLLECTION/ESF-file-format
+	url = https://github.com/joukop/ESF-file-format.git

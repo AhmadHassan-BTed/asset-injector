@@ -1,1 +1,0 @@
-merchantDialogue = "Hello there playerName, can I interest ye in a bow an' arrow?"

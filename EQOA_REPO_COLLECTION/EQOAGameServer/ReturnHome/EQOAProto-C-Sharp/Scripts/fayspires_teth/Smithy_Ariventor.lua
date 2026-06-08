@@ -1,1 +1,0 @@
-merchantDialogue = "If you're looking for fine metalwork, you've come to the right place!"

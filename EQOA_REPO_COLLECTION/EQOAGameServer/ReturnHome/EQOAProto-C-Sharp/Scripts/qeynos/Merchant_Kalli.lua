@@ -1,1 +1,0 @@
-merchantDialogue = "If you are new to the world of enchantments, please study these scrolls."

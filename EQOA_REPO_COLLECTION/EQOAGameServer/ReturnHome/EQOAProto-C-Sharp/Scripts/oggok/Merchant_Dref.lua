@@ -1,1 +1,0 @@
-merchantDialogue = "I can begin your skill training. Are you prepared?"merchantDialogue = "Would you like to see my smithing supplies?"

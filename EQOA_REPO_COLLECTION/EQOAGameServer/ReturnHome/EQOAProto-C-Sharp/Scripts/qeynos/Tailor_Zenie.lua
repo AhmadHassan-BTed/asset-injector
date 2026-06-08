@@ -1,1 +1,0 @@
-merchantDialogue = "Hello. May I show you some gossamer armor?"

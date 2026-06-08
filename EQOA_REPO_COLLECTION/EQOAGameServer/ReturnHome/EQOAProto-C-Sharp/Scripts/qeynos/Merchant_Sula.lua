@@ -1,1 +1,0 @@
-merchantDialogue = "Perhaps you are ready for these Cleric spells."

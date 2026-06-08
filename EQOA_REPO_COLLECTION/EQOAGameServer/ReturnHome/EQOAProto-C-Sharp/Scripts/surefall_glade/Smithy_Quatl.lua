@@ -1,1 +1,0 @@
-merchantDialogue = "Perhaps a spear or dagger would lighten your load and keep you sharp in battle?"

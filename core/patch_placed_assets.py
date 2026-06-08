@@ -5,9 +5,21 @@ import mmap
 import sys
 
 def patch_iso_in_place():
+    # Terminate running PCSX2 emulator if it is open to avoid file locks on the patched ISO
+    try:
+        import subprocess
+        res = subprocess.run(["tasklist"], capture_output=True, text=True)
+        if "pcsx2-qt.exe" in res.stdout.lower() or "pcsx2.exe" in res.stdout.lower():
+            print("[*] Detected running PCSX2 emulator. Terminating to avoid file locks...")
+            subprocess.run(["taskkill", "/F", "/IM", "pcsx2-qt.exe"], capture_output=True)
+            subprocess.run(["taskkill", "/F", "/IM", "pcsx2.exe"], capture_output=True)
+    except Exception as e:
+        print(f"[!] Warning: Could not check or terminate PCSX2 process: {e}")
+
     print("=" * 80)
     print("  EQOA NATIVE MULTI-ASSET ISO IN-PLACE PATCHER")
     print("=" * 80)
+
     
     # Define source directories
     assets_data = 'assets/merged-assets/data'

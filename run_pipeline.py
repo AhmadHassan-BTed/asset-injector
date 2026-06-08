@@ -18,7 +18,7 @@ import mmap
 # ─── paths ────────────────────────────────────────────────────────────────────
 ROOT          = os.path.dirname(os.path.abspath(__file__))
 WORKSPACE     = os.path.join(ROOT, "workspace")
-ISO_ORIG      = os.path.join(ROOT, "iso", "unmodified", "EQOA_Frontiers.iso")
+ISO_ORIG      = os.path.join(ROOT, "iso", "unpatched", "EQOA_Frontiers.iso")
 ISO_PATCHED   = os.path.join(ROOT, "iso", "patched", "EQOA_Frontiers_Patched.iso")
 ISO_TMP       = ISO_PATCHED + ".tmp"
 ESF_MERGED    = os.path.join(WORKSPACE, "FINAL_CHAR_MERGED.ESF")
@@ -45,7 +45,7 @@ def stage1_sanitize():
 def stage2_align():
     print()
     print("=" * 70)
-    print("  STAGE 2 — MANIFEST ALIGNER (pointer sync → custom node IDs)")
+    print("  STAGE 2 — MANIFEST ALIGNER (pointer sync -> custom node IDs)")
     print("=" * 70)
     # Discover every sanitized .bin in payloads and align each one
     import glob, struct as st
@@ -304,22 +304,22 @@ def stage5_udf_patch():
         for ptype, poff in patches:
             if ptype == "size_8le":
                 fe_raw[poff : poff + 8] = struct.pack("<Q", esf_size)
-                print(f"  Patched size (8-byte LE) @ 0x{poff:04X}: {OLD_SIZE:,} → {esf_size:,}")
+                print(f"  Patched size (8-byte LE) @ 0x{poff:04X}: {OLD_SIZE:,} -> {esf_size:,}")
             elif ptype == "size_4le":
                 fe_raw[poff : poff + 4] = struct.pack("<I", esf_size)
-                print(f"  Patched size (4-byte LE) @ 0x{poff:04X}: {OLD_SIZE} → {esf_size}")
+                print(f"  Patched size (4-byte LE) @ 0x{poff:04X}: {OLD_SIZE} -> {esf_size}")
             elif ptype == "size_4be":
                 fe_raw[poff : poff + 4] = struct.pack(">I", esf_size)
-                print(f"  Patched size (4-byte BE) @ 0x{poff:04X}: {OLD_SIZE} → {esf_size}")
+                print(f"  Patched size (4-byte BE) @ 0x{poff:04X}: {OLD_SIZE} -> {esf_size}")
             elif ptype == "lba_4le":
                 fe_raw[poff : poff + 4] = struct.pack("<I", new_lba)
-                print(f"  Patched LBA (4-byte LE) @ 0x{poff:04X}: {OLD_LBA} → {new_lba}")
+                print(f"  Patched LBA (4-byte LE) @ 0x{poff:04X}: {OLD_LBA} -> {new_lba}")
             elif ptype == "lba_4be":
                 fe_raw[poff : poff + 4] = struct.pack(">I", new_lba)
-                print(f"  Patched LBA (4-byte BE) @ 0x{poff:04X}: {OLD_LBA} → {new_lba}")
+                print(f"  Patched LBA (4-byte BE) @ 0x{poff:04X}: {OLD_LBA} -> {new_lba}")
             elif ptype == "blocks_8le":
                 fe_raw[poff : poff + 8] = struct.pack("<Q", new_blocks)
-                print(f"  Patched blocks (8-byte LE) @ 0x{poff:04X}: {old_blocks} → {new_blocks}")
+                print(f"  Patched blocks (8-byte LE) @ 0x{poff:04X}: {old_blocks} -> {new_blocks}")
 
         # ── Recompute UDF Tag Checksum (ECMA-167 §7.2) ─────────────────────
         tag = bytearray(fe_raw[:16])
@@ -391,7 +391,7 @@ def main():
 
     # ── run stages ───────────────────────────────────────────────────────────
     stage1_sanitize()    # Purge NaNs / Infs / bad bone indices from payloads
-    stage2_align()       # Sync manifest pointer IDs → custom geometry
+    stage2_align()       # Sync manifest pointer IDs -> custom geometry
     stage3_rebuild()     # Rebuild CHAR.ESF with sanitized + aligned payloads
     new_lba = stage4_repack_iso()   # Pack into ISO, compute final LBA
     stage5_udf_patch()   # Patch UDF File Entry with dynamically-computed LBA

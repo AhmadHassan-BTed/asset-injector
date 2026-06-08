@@ -1,1 +1,0 @@
-merchantDialogue = "Darrson and I started making weapons at the same time. While similar in craft I believe my quality is superior."

@@ -1,1 +1,0 @@
-merchantDialogue = "Me construct this studded leather armor, you need to see it."

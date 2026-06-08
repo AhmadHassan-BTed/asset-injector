@@ -1,1 +1,0 @@
-merchantDialogue = "Take a moment and check that yer prepared before you head out, ok?"

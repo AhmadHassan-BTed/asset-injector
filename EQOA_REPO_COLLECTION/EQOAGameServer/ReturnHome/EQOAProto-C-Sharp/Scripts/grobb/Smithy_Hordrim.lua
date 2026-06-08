@@ -1,1 +1,0 @@
-merchantDialogue = "You want to SMASH froglok, right? See Hordrim's hammers and staffs!"

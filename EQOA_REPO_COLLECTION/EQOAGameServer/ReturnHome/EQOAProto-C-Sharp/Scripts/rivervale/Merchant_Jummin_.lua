@@ -1,1 +1,0 @@
-merchantDialogue = "Easy to discern spells for the beginner cleric. Make sure yer ready for the adventures ahead."

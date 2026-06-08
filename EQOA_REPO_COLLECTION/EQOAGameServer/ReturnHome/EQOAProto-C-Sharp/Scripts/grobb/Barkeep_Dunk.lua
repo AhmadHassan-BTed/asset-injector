@@ -1,1 +1,0 @@
-merchantDialogue = "Trolls need dis troll food to live long time. Dis put hair on chest. Women troll too."

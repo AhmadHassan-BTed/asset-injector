@@ -33,32 +33,32 @@ def diff_assets(original_path, expansion_path):
     exp_map = {entry.asset_id: entry for entry in exp_table if entry.asset_id is not None}
 
     # 3. Perform Diff Analysis
-    print("\n[*] Diffing assets to locate the 11 original character race models...")
+    print("\n[*] Diffing assets to locate the 22 original character race models...")
+    
+    PLAYABLE_CHARACTER_HASHES = {
+        0x2EF8E480, 0x05AEBA67, 0xB54E4D8A, 0xCD51EF83, 0x7C0C8A10,
+        0x90BCCCF2, 0x6074557C, 0x5BDEA541, 0xEBB9FC93, 0x0017A0BD,
+        0xB5C785F2, 0xFE4FF1F2, 0xCC3EA73A, 0x998B1B02, 0x618C0875,
+        0xE32D91A8, 0xF924B56B, 0x5B8E5BDC, 0x19603EEF, 0x9C23B6FF,
+        0x628A0767, 0x2610A50D
+    }
     
     type_changed = []
     
     for orig_entry in orig_table:
-        # Filter strictly for Character Models (type 0x062700 in Original)
-        if orig_entry.type_id != 0x062700:
-            continue
-            
         h = orig_entry.asset_id
-        if h is None:
+        if h not in PLAYABLE_CHARACTER_HASHES:
             continue
             
         if h in exp_map:
             exp_entry = exp_map[h]
-            # In Frontiers, the base player models changed type from 0x062700 to 0x72700
-            if orig_entry.type_id == 0x062700 and exp_entry.type_id == 0x72700:
-                type_changed.append((orig_entry, exp_entry))
+            type_changed.append((orig_entry, exp_entry))
 
-    # Sort type-changed models by original size descending to isolate the 11 base race models
-    # Base character race models (with skeleton/textures) are extremely large (>500KB),
-    # whereas attachments like armor, heads, or weapons are much smaller.
+    # Sort type-changed models by original size descending to isolate the 22 base race models
     type_changed.sort(key=lambda x: x[0].length, reverse=True)
     
-    target_models = type_changed[:11]
-    print(f"[+] Isolated the {len(target_models)} target original character race models based on size-clustering and type changes.")
+    target_models = type_changed
+    print(f"[+] Isolated the {len(target_models)} target original character race models based on precise hash mapping.")
     
     # Format output as JSON list
     output_list = []

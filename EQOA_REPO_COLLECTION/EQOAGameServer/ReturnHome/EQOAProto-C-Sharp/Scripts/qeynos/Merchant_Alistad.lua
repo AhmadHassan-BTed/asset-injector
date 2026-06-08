@@ -1,1 +1,0 @@
-merchantDialogue = "To start your journey as a wizard, please examine these spells."

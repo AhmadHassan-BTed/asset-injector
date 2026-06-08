@@ -1,5 +1,0 @@
-
-1) Only place this dll in the directory where you are running EQOAemu.exe
-2) Don't run the emulator in the same directory where you compile it
-3) Somehow having this in the compile directory screws up the build process
-

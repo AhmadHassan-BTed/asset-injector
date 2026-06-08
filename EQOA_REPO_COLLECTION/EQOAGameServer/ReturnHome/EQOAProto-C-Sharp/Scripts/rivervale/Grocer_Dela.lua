@@ -1,1 +1,0 @@
-merchantDialogue = "It was Redders' idea to open on this side of the lake. Most folks don't come over to resupply. Support local, buy a drink?"

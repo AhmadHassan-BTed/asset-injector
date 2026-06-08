@@ -1,1 +1,0 @@
-merchantDialogue = "Don't let my prices fool you. This is the finest silk and padded armor that tunar can buy...in these parts."

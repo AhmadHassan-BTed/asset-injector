@@ -1,1 +1,0 @@
-merchantDialogue = "If'n ye be a chosen of Brell then my wares are for you."

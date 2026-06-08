@@ -1,1 +1,0 @@
-merchantDialogue = "I make fine steel weapons. Only deadly trolls need to bother looking..."

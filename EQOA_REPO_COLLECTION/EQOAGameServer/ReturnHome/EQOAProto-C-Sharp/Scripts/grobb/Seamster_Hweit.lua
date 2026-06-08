@@ -1,1 +1,0 @@
-merchantDialogue = "I can teach you da ways of tailoring, interested?"

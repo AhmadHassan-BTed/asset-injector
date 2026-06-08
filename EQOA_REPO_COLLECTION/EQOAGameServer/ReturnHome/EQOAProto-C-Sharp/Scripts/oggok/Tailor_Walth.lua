@@ -1,1 +1,0 @@
-merchantDialogue = "My cured armor methods are ogre secret...Wanna see?"

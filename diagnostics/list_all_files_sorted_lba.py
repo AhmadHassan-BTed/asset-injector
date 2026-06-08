@@ -28,4 +28,5 @@ def list_sorted_lba(iso_path):
             print(f"LBA: {extent:7d} | Size: {length:11,} B | {path}")
     iso.close()
 
-list_sorted_lba('EQOA_Frontiers.iso')
+list_sorted_lba('iso/patched/EQOA_Frontiers_Patched.iso')
+

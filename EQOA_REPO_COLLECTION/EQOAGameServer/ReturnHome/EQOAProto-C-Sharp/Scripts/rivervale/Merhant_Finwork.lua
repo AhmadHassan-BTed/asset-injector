@@ -1,1 +1,0 @@
-merchantDialogue = "Some folks are sick of you adventurers cutting into the tailoring business. Me, I saw an opportunity to make some tunar."

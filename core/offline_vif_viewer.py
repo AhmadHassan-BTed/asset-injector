@@ -56,6 +56,23 @@ def decompress_csf(filepath):
     return bytes(out_buf)
 
 
+def find_bounding_box(data: bytes, search_limit: int = 256) -> int:
+    """Scan byte payload for a contiguous sequence of 6 valid floats representing a bounding box."""
+    for i in range(0, min(search_limit, len(data) - 24), 4):
+        try:
+            floats = struct.unpack_from('<ffffff', data, i)
+            valid = True
+            for f in floats:
+                if math.isnan(f) or math.isinf(f) or abs(f) > 50000.0 or abs(f) < 0.0001 and f != 0.0:
+                    valid = False
+                    break
+            if valid and any(f != 0.0 for f in floats):
+                return i
+        except Exception:
+            continue
+    return None
+
+
 def extract_bounding_volumes(node):
     """
     Extract bounding box and sphere from the root model node inline data.
@@ -73,11 +90,18 @@ def extract_bounding_volumes(node):
     }
     
     inline = node.get('inline_data', b'')
-    if len(inline) >= 0x48:
+    if inline is None or len(inline) < 40:
+        if node.get('children') and len(node['children']) > 0:
+            first_child = node['children'][0]
+            if first_child.get('child_count', 0) == 0:
+                inline = first_child.get('inline_data', b'')
+
+    inline = inline or b''
+    off = find_bounding_box(inline)
+    if off is not None and len(inline) >= off + 40:
         try:
-            # Typical float layout at offset 0x20
-            minX, minY, minZ, maxX, maxY, maxZ = struct.unpack_from('<ffffff', inline, 0x20)
-            sX, sY, sZ, sR = struct.unpack_from('<ffff', inline, 0x38)
+            minX, minY, minZ, maxX, maxY, maxZ = struct.unpack_from('<ffffff', inline, off)
+            sX, sY, sZ, sR = struct.unpack_from('<ffff', inline, off + 24)
             
             bounds['min_x'] = minX
             bounds['min_y'] = minY
@@ -91,8 +115,8 @@ def extract_bounding_volumes(node):
             bounds['sphere_z'] = sZ
             bounds['sphere_r'] = sR
             
-            # Check for corruption (0 radius, exactly 0 on all bounds, or NaNs)
-            if math.isnan(minX) or sR <= 0.0 or (minX == 0 and maxX == 0 and minY == 0):
+            # Check for corruption (exactly 0 on all bounds, negative radius, or NaNs)
+            if math.isnan(minX) or sR < 0.0 or (minX == 0 and maxX == 0 and minY == 0):
                 bounds['corrupted'] = True
                 
         except struct.error:
@@ -139,8 +163,94 @@ def extract_v4_32_vertices(data):
     return vertices
 
 
+def extract_skin_prim_vertices(node):
+    """
+    Parses a SkinPrimBuffer (Type 0x1210) node's inline_data to extract vertices.
+    Ref: primbuffer.go
+    """
+    vertices = []
+    inline = node.get('inline_data')
+    if not inline or len(inline) < 32:
+        return vertices
+        
+    try:
+        # Determine node version from type_id
+        # type_id upper 16 bits is the version
+        ver = (node['type_id'] >> 16) & 0xFFFF
+        
+        pos = 0
+        if ver > 1:
+            pos += 4  # skip dict_id
+            
+        if pos + 28 > len(inline):
+            return vertices
+            
+        pbtype = struct.unpack_from('<i', inline, pos)[0]
+        nmats = struct.unpack_from('<i', inline, pos + 4)[0]
+        nfaces = struct.unpack_from('<i', inline, pos + 8)[0]
+        unknown = struct.unpack_from('<i', inline, pos + 12)[0]
+        p1 = struct.unpack_from('<i', inline, pos + 16)[0]
+        p2 = struct.unpack_from('<i', inline, pos + 20)[0]
+        p3 = struct.unpack_from('<i', inline, pos + 24)[0]
+        
+
+        
+        pos += 28
+        
+        # Avoid float exponent overflows
+        p1_clamped = max(-30, min(30, p1))
+        p2_clamped = max(-30, min(30, p2))
+        packing1 = 1.0 / (2.0 ** p1_clamped)
+        packing2 = 1.0 / (2.0 ** p2_clamped)
+        
+        for fi in range(nfaces):
+            if pos + 8 > len(inline):
+                break
+            nverts = struct.unpack_from('<i', inline, pos)[0]
+            mat = struct.unpack_from('<i', inline, pos + 4)[0]
+            pos += 8
+            
+            if pbtype in (2, 4):
+                # Stride: 2*5 + 3 + 4 = 17 bytes. If pbtype == 4: 17 + 2 = 19 bytes.
+                stride = 19 if pbtype == 4 else 17
+                for idx in range(nverts):
+                    if pos + stride > len(inline):
+                        break
+                    x, y, z = struct.unpack_from('<hhh', inline, pos)
+                    pos += stride
+                    
+                    px = float(x) * packing1
+                    py = float(y) * packing1
+                    pz = float(z) * packing1
+                    
+                    if abs(px) < 10000.0 and abs(py) < 10000.0 and abs(pz) < 10000.0:
+                        vertices.append((px, py, pz))
+                        
+            elif pbtype == 5:
+                # Stride: 2*5 + 3 + 4 + 4 = 21 bytes
+                stride = 21
+                for idx in range(nverts):
+                    if pos + stride > len(inline):
+                        break
+                    x, y, z = struct.unpack_from('<hhh', inline, pos)
+                    pos += stride
+                    
+                    px = float(x) * packing1
+                    py = float(y) * packing1
+                    pz = float(z) * packing1
+                    
+                    if abs(px) < 10000.0 and abs(py) < 10000.0 and abs(pz) < 10000.0:
+                        vertices.append((px, py, pz))
+                        
+    except Exception as e:
+        pass
+        
+    return vertices
+
+
 def find_geom_node(node):
-    if node['type_id'] == 0x02610:
+    # CSpriteArray (0x2800) is the sub-sprites array containing all geometry mesh components in character models.
+    if (node['type_id'] & 0xFFFF) == 0x2800:
         return node
     for child in node.get('children', []):
         found = find_geom_node(child)
@@ -292,7 +402,26 @@ def main():
     geom_bytes = get_node_binary(raw_esf, geom_node)
     print(f"[*] Extracted 0x02610 Geometry block ({len(geom_bytes):,} bytes)")
     
-    verts = extract_v4_32_vertices(geom_bytes)
+    geom_buffers = []
+    def find_all_geom_buffers(node, lst):
+        low_type = node['type_id'] & 0xFFFF
+        if low_type in (0x1200, 0x1210) or node['type_id'] == 0x32600:
+            lst.append(node)
+        for child in node.get('children', []):
+            find_all_geom_buffers(child, lst)
+            
+    find_all_geom_buffers(geom_node, geom_buffers)
+    
+    verts = []
+    if geom_buffers:
+        print(f"[*] Found {len(geom_buffers)} packed primitive buffers. Parsing...")
+        for buf in geom_buffers:
+            verts.extend(extract_skin_prim_vertices(buf))
+            
+    if not verts:
+        print("[*] No vertices extracted from packed buffers. Falling back to V4-32 float VIF scan...")
+        verts = extract_v4_32_vertices(geom_bytes)
+
     
     hash_str = f"0x{args.hash:08X}" if args.hash else "Unknown"
     title = f"PS2 VIF Mesh: {hash_str} | Bounds Corrupted: {bounds['corrupted']}"

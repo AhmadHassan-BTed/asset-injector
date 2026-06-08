@@ -1,1 +1,0 @@
-merchantDialogue = "You will rain destruction upon the enemy with my scrolls."

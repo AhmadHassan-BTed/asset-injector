@@ -1,1 +1,0 @@
-merchantDialogue = "May these aid you when you are ready."

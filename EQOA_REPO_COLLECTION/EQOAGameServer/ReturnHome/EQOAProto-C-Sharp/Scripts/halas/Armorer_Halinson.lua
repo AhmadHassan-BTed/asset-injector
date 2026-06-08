@@ -1,1 +1,0 @@
-merchantDialogue = "Come to browse my chain armor have you? It's about time from the looks of it. Fair prices and fine quality here."

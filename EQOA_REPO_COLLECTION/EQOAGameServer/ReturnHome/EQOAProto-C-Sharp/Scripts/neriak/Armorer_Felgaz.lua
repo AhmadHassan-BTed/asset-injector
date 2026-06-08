@@ -1,1 +1,0 @@
-merchantDialogue = "I have the finest metalwork in all of Neriak."

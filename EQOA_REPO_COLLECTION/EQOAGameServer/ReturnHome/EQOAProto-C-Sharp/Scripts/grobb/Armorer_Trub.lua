@@ -1,1 +1,0 @@
-merchantDialogue = "I have some banded armor that may protect one such as you. Would you like to see?"

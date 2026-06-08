@@ -6,6 +6,16 @@ import struct
 import mmap
 
 def repack_iso():
+    # Terminate running PCSX2 emulator if it is open to avoid file locks on the patched ISO
+    try:
+        import subprocess
+        res = subprocess.run(["tasklist"], capture_output=True, text=True)
+        if "pcsx2-qt.exe" in res.stdout.lower():
+            print("[*] Detected running PCSX2 emulator. Terminating to avoid file locks...")
+            subprocess.run(["taskkill", "/F", "/IM", "pcsx2-qt.exe"], capture_output=True)
+    except Exception as e:
+        print(f"[!] Warning: Could not check or terminate PCSX2 process: {e}")
+
     iso_path = 'iso/unpatched/EQOA_Frontiers.iso'
     patched_path = 'iso/patched/EQOA_Frontiers_Patched.iso'
     tmp_path = patched_path + '.tmp'

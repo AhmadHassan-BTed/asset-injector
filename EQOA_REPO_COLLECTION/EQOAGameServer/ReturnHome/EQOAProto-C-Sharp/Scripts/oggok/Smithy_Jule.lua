@@ -1,1 +1,0 @@
-merchantDialogue = "An ogre with a hammer or staff is a fearsome site. Care to shop?"

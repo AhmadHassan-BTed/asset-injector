@@ -1,1 +1,0 @@
-merchantDialogue = "Obviously you need a weaponsmithing hammer or you get nothing done. I have da best."

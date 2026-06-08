@@ -1,1 +1,0 @@
-merchantDialogue = "I've gathered these fine metals throughout all of Rathe and Feerott. Would you like to see them?"

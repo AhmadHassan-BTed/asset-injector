@@ -1,1 +1,0 @@
-merchantDialogue = "Piercing weapons are sort of my thing. I've collected so many that I've got to make room by selling the \"junk\" to you."

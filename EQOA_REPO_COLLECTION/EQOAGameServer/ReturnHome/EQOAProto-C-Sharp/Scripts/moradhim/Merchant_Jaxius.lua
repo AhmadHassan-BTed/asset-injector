@@ -1,1 +1,0 @@
-merchantDialogue = "Looking for Warrior scrolls? Take a look at what I have."

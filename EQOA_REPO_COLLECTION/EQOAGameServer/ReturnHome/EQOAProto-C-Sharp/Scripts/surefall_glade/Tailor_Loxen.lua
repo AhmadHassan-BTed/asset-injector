@@ -1,1 +1,0 @@
-merchantDialogue = "Perhaps you could use some cured armor?"

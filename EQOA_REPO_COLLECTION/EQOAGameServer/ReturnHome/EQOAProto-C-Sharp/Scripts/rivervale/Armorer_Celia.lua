@@ -1,1 +1,0 @@
-merchantDialogue = "I've finished some new chainmail equipment you might be interested in. Prices are what they are, damn family tax."

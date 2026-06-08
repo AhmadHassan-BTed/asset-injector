@@ -1,1 +1,0 @@
-merchantDialogue = "I have a selection of patterns and tailor kits here."

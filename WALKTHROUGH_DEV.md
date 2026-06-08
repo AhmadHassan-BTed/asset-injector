@@ -16,14 +16,14 @@ To bypass this constraint, this pipeline implements **Zero-Reorganization Sector
 ## 📁 Parent Assets Folder Structure & Decoupled Overlay Pipeline
 
 The repository organizes database and layout assets under a unified parent directory:
-- **`assets/Vanilla/`**: Baseline assets containing original Vanilla EQOA models and select screen files.
-- **`assets/Frontiers/`**: Destination folder where clean Frontiers base assets are extracted, and where custom overlays can be placed.
+- **`assets/Frontiers/`**: Baseline folder where clean Frontiers base assets (character select screens, customization database, etc.) are extracted. These serve as our primary baseline to preserve Frontiers textures.
+- **`assets/Vanilla/`**: Source folder containing original Vanilla EQOA model databases used for transplanting character models.
 
 ### 🔄 The Decoupled Merge Pipeline (`core/merge_assets.py`)
 Decoupled from the initial database compilation, the merger script `core.merge_assets` is invoked as Step 3 in the pipeline. This script:
 1. Clears and creates the temporary `assets/merged-assets/` folder (which is ignored by Git to avoid tracking transient compile artifacts).
-2. Recursively copies the baseline files from `assets/Vanilla/`.
-3. Recursively overlays files from `assets/Frontiers/` on top of the baseline files, automatically overriding files with matching filenames.
+2. Recursively copies the baseline files from `assets/Frontiers/` into `assets/merged-assets/` (excluding `CHAR.ESF` to preserve the surgically recompiled database in Step 4).
+3. Surgically overlays Vanilla's `CHARSEL1.CSF`...`CHARSEL4.CSF` files on top of the Frontiers baseline. This inherits the 11 classic Vanilla character models (22 select screen versions) for character selection, while preserving Frontiers' original customization database (`CHARCUST.CSF`), face database (`CHARFACE.CSF`, `CHARFACE.ESF`), and UI textures completely intact.
 4. The subsequent surgical patch step (`core/patch_placed_assets.py` as Step 4) reads these combined payloads from `assets/merged-assets/` and applies them directly.
 
 ## 💾 Sector Mapping & Offsets

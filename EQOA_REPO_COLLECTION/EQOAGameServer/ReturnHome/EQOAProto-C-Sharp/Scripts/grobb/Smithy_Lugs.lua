@@ -1,1 +1,0 @@
-merchantDialogue = "Lugs has best hammers and clubs. Take closer look!"

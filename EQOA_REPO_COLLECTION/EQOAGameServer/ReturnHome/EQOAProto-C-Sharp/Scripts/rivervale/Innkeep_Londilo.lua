@@ -1,1 +1,0 @@
-merchantDialogue = "Welcome to the Honeysuckle Inn! The rooms are cozy and the drinks are strong and sweet. Follow the road north to Rivervale."

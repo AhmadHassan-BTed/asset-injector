@@ -1,1 +1,0 @@
-merchantDialogue = "Welcome initiate, what u want from Gulkot?"

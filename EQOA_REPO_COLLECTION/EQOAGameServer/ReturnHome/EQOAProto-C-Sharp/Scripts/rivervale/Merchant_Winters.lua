@@ -1,1 +1,0 @@
-merchantDialogue = "I sell teachings for inexperienced warriors. We must all begin somewhere to get to the place we desire to be."

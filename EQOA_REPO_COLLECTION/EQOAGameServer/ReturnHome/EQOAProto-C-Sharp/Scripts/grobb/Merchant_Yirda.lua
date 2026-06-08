@@ -1,1 +1,0 @@
-merchantDialogue = "Yirda out of stock. Frogloks steal all Yirda's supplies! Yirda mad. If playerName see Froglok, squish dem for Yirda!"
