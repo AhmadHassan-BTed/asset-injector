@@ -1,1 +1,0 @@
-merchantDialogue = "By the blessing of Brell, The Church of Below will protect the dwarfs from the curses of this land."

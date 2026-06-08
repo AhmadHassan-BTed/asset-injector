@@ -1,1 +1,0 @@
-merchantDialogue = "Beldok find best iron ore and sell to you."

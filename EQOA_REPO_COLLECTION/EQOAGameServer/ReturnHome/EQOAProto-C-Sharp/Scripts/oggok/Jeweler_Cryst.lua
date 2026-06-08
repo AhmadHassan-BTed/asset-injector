@@ -1,1 +1,0 @@
-merchantDialogue = "Small jewels bring you success on battlefield. Want to learn Jewelcrafting?"

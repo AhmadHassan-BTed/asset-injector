@@ -1,1 +1,0 @@
-merchantDialogue = "Lookin' to get ye a wee bit o' fishin going, eh playerName??"

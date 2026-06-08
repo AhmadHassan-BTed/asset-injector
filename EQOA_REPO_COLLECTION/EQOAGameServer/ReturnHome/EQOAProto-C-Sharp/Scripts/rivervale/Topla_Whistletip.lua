@@ -1,1 +1,0 @@
-merchantDialogue = "If yer learn'n from Dobi, yer gonna need my kits to complete the tests to raise your jewelry crafting skills."

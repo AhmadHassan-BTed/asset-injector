@@ -1,1 +1,0 @@
-merchantDialogue = "You need Basher shirt. I spend all day making dem for you. Take one?"

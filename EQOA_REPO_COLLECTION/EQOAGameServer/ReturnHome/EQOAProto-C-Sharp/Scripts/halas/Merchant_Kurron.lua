@@ -1,1 +1,0 @@
-merchantDialogue = "Fine metals for sale. Mined by the dwarves of Moradhim."

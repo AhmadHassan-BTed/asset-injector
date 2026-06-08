@@ -1,1 +1,0 @@
-merchantDialogue = "I'm here ta get you equipped before ya head out. What can I get ya?"

@@ -1,1 +1,0 @@
-merchantDialogue = "My bows and arrows will do their part long as you don't miss. Go ahead and load up now, tributes are due soon."

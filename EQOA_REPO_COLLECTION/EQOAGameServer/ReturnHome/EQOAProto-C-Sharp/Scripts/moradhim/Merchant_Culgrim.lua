@@ -1,1 +1,0 @@
-merchantDialogue = "Wouldya care to look at these components?"

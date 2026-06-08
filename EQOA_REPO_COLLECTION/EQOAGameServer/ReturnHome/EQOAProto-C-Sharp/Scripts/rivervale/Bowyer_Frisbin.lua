@@ -1,1 +1,0 @@
-merchantDialogue = "Bows and arrows for sale! Newly fletched and ready to fly."

@@ -1,1 +1,0 @@
-merchantDialogue = "I couldn't pass the initiation tests to become a druid. Decided to create spells for them instead. Turns out, I'm a natural."

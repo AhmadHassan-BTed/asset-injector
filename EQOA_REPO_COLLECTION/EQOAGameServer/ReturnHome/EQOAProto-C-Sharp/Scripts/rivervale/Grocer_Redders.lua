@@ -1,1 +1,0 @@
-merchantDialogue = "Feels like all Dela does is complain about being on this side of the lake. I keep telling her, our food will draw them over."

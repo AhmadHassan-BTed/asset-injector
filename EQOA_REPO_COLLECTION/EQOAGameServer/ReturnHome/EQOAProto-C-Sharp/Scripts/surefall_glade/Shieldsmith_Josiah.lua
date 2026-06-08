@@ -1,1 +1,0 @@
-merchantDialogue = "I have a wide selection of shields here, how about a look?"

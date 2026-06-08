@@ -1,1 +1,0 @@
-merchantDialogue = "Might you be interested in buying some cleric scrolls?"

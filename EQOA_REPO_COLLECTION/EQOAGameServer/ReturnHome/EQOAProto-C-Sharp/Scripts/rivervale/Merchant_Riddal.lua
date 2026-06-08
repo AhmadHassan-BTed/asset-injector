@@ -1,1 +1,0 @@
-merchantDialogue = "My spells are for warriors that have seen plenty of Tunaria and aren't afraid of the great beasties about it."

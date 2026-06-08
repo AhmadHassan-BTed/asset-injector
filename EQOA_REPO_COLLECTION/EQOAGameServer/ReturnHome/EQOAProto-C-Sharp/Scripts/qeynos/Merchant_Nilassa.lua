@@ -1,1 +1,0 @@
-merchantDialogue = "Perhaps you should start your journey with some of these scrolls, playerName."

@@ -1,1 +1,0 @@
-merchantDialogue = "Rawhide armor restock just arrived! Straight from Qeynos. Spared no expense to pass on to you, playerName!"

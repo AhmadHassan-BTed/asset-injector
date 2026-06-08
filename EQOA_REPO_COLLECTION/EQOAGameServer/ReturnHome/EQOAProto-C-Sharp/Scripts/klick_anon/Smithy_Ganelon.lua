@@ -1,1 +1,0 @@
-merchantDialogue = "If you're looking for clubs and hammers, you've come to the right place. Care to browse?"

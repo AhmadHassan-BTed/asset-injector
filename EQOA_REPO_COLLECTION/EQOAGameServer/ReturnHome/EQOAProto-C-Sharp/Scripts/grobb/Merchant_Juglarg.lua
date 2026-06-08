@@ -1,1 +1,0 @@
-merchantDialogue = "I have da jewelers kits you need..."

@@ -1,1 +1,0 @@
-merchantDialogue = "Many trolls love hatchets and knives to slay da froglok. How about you try?"

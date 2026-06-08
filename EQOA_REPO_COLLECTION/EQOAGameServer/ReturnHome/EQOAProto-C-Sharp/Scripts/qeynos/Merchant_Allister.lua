@@ -1,1 +1,0 @@
-merchantDialogue = "Would you care for one of my fine weaponsmithing hammers?"

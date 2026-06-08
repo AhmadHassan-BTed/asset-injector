@@ -1,1 +1,0 @@
-merchantDialogue = "I've got the finest silks, burlaps, and cotton in the city. Imported directly from Qeynos and Highbourne!"

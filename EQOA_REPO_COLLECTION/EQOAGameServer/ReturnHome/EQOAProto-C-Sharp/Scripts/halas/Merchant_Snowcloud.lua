@@ -1,1 +1,0 @@
-merchantDialogue = "I stay well stocked with meticulously crafted materials for all of your jewelry making needs."

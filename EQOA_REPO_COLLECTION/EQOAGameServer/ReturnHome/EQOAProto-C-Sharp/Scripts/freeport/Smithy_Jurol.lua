@@ -1,1 +1,0 @@
-merchantDialogue = "Looking for some dirks or spears?"

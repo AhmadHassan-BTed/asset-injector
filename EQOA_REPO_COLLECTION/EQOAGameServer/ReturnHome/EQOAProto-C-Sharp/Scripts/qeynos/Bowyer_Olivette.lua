@@ -1,1 +1,0 @@
-merchantDialogue = "Perhaps a sturdy bow, or a lighter arrow would help?"

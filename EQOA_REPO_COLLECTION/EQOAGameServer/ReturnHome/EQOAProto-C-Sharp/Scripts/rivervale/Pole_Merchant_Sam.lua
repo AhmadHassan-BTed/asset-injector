@@ -1,1 +1,0 @@
-merchantDialogue = "If you wanna catch a fish, yer gonna need a pole. Plenty to pick from. Ask if ye got a question, Sam won't steer ya wrong."

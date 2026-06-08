@@ -1,1 +1,0 @@
-merchantDialogue = "Bows aren't the only thing with curves here. Keep your eyes on the weaponry."

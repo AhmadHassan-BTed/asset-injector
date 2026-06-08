@@ -1,1 +1,0 @@
-merchantDialogue = "Gett'n started with tailoring? You'll need my materials to make anything. Sorry bout the cost…gotta keep the \"families\" paid."

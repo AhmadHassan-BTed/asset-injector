@@ -1,1 +1,0 @@
-merchantDialogue = "You'll need my hammers if you expect to ever craft anything as a weaponsmith."

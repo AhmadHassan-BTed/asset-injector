@@ -1,1 +1,0 @@
-merchantDialogue = "I've been guiding warriors for a long time. Your attacks and parries must be fluid and ever adapting, like water."

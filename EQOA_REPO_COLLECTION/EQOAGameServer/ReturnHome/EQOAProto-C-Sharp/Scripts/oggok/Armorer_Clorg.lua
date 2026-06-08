@@ -1,1 +1,0 @@
-merchantDialogue = "My chainmail will help you live longer, if it fits you. Will you look?"

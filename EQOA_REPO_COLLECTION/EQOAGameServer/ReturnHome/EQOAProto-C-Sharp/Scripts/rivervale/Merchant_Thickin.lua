@@ -1,1 +1,0 @@
-merchantDialogue = "Aspiring to be an armorer that rivals the dwarves, eh? You'll need my wares to get there. Buy what you need. Tunar only."

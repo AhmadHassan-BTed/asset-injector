@@ -1,1 +1,0 @@
-merchantDialogue = "Greetings, child."

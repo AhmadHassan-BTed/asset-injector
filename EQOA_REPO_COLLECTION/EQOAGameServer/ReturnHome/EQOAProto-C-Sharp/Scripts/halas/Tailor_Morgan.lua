@@ -1,1 +1,0 @@
-merchantDialogue = "Woolen armor for sale! No sheep were harmed in the making."

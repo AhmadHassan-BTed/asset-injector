@@ -1,1 +1,0 @@
-merchantDialogue = "What can I do fer ye'? I've bit of chain mail here if ya like!"

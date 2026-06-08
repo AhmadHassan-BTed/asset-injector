@@ -1,1 +1,0 @@
-merchantDialogue = "My spears and daggers are superior in every way to what Becca sells. Course you'll need a bit more experience to use mine."

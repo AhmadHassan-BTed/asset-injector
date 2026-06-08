@@ -1,2 +1,0 @@
-# Hagley
-EQOA Test Server

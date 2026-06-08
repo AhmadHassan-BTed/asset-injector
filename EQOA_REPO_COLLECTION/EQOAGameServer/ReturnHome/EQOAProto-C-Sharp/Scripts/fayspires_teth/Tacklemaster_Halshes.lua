@@ -1,1 +1,0 @@
-merchantDialogue = "Looking to purchase some bait for your hook?"

@@ -1,1 +1,0 @@
-merchantDialogue = "Crafting patterns and tailoring kits galore! Take your time and buy what is right for you."
