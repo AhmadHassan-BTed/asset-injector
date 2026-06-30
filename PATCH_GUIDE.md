@@ -2,7 +2,7 @@
 
 This guide describes how to patch and restore original character models and custom assets into the PlayStation 2 *EverQuest Online Adventures: Frontiers* game ISO using this fully automated reverse-engineering toolkit.
 
-## 🚀 Pre-requisites & Setup
+##  Pre-requisites & Setup
 
 1. **Python Environment**: Ensure you have Python installed (version 3.10 or higher is recommended).
 2. **Setup Workspace**: Double-click **`setup_environment.bat`** to automatically create the folder structures and download the required baseline clean game ISO files:
@@ -11,7 +11,7 @@ This guide describes how to patch and restore original character models and cust
 
 *(Alternatively, if you already have clean unpatched copies of these ISOs, you can place them manually into the `iso/unpatched/` folder under these exact names).*
 
-## 📁 Custom Assets & Baseline Merging Strategy
+##  Custom Assets & Baseline Merging Strategy
 
 The pipeline uses the **Frontiers expansion assets** as the primary baseline to preserve Frontiers' high-quality textures, interfaces, customization menus, face databases, and character select screens.
 
@@ -31,7 +31,7 @@ Within `assets/Frontiers/` (baseline) and `assets/Vanilla/` (sources), files res
 
 *(Note: Baseline Frontiers assets are extracted in Step 2 into `assets/Frontiers/` so that they can be used directly for character select interfaces).*
 
-## ⚙️ Running the 4-Step Automated Patch Pipeline
+##  Running the 4-Step Automated Patch Pipeline
 
 To patch the game ISO and inject custom assets, run the following four batch scripts in order:
 
@@ -47,7 +47,7 @@ To patch the game ISO and inject custom assets, run the following four batch scr
 ### 4️⃣ Step 4: Inject Assets (`steps/step4_inject_assets.bat`)
 - **What it does**: Forcefully terminates any running `pcsx2-qt.exe` process (to prevent file lock conflicts), copies combined assets from `assets/merged-assets/` into the workspace folders, and surgically patches them in-place directly into the patched ISO. It concludes by running a high-integrity verification suite.
 
-## 🎮 Playing the Game
+##  Playing the Game
 
 Once the tool reports **`HIGH-FIDELITY STRUCTURAL TRANSPLANT PIPELINE EXECUTED SUCCESSFULLY`**:
 1. Open the PCSX2 emulator.
