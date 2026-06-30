@@ -1,38 +1,21 @@
-*.iso
-workspace/original/
-workspace/expansion/
-workspace/payloads/
-
-*.ESF
-*.CSF
-
-*.iso
-
-*.zip
-
-*.rar
-
-CHAR_MERGED_BROKEN.ESF
-
-workspace/FINAL_CHAR_MERGED.ESF
-
-workspace/IDENTITY_TEST.ESF
-
-# Python
 __pycache__/
 *.py[cod]
-*$py.class
+.venv/
+venv/
 
-# Logs
-logs/
 *.log
 diagnostics/logs/
 
-LIGHTWEIGHT_CUSTOMER_DELIVERY/
+*.iso
+*.zip
+*.rar
 
-# Agent specific files
-.agents/
-skills-lock.json
+workspace/original/
+workspace/expansion/
+workspace/payloads/
+workspace/scratch/__pycache__/
+workspace/*.ESF
+workspace/*.CSF
 
-# Merged temp files
 assets/merged-assets/
+LIGHTWEIGHT_CUSTOMER_DELIVERY/
