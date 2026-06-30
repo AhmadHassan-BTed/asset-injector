@@ -38,6 +38,12 @@ To completely bypass these architecture mismatches, we implemented the **Geometr
 - **`core/validate_dma.py`**: A low-level DMA tag integrity verifier.
 - **`core/audit_materials.py` & `core/w_component_audit.py`**: Raw Hex/Float array validation scripts.
 
+## Utilities
+
+External EQOA tools and reference implementations are kept under `UTILITIES/`. These projects were authored and maintained by their respective creators; this repository keeps them organized as utility references for asset research, format inspection, server behavior, ISO patching, and workflow automation.
+
+See `CHANGELOG.md` for the utility rename and attribution notes.
+
 ## Getting Started & Environment Setup
 
 1. Clone or download this repository.
@@ -60,23 +66,3 @@ The entire suite is abstracted into a single automated interface.
 - **[1] Patch Game ISO**: Executes the pristine Geometry-Only Macro-Node Transplant. It parses the databases, surgically upgrades the target character assets, repacks the `CHAR.ESF` using the In-Place Binary Patcher, and generates a bootable `iso/patched/EQOA_Frontiers_Patched.iso`.
 
 *(Ensure your emulator is CLOSED before running the patcher to prevent file lock `[Errno 13] Permission Denied` errors).*
-
-## Contributors & Source Projects
-
-This project builds on research, tools, and reference implementations from the EQOA community. Source projects included as submodules are credited below:
-
-- [benturi](https://github.com/benturi) - [ben_eqoa_c_server](https://github.com/benturi/ben_eqoa_c_server)
-- [rosyfiles](https://github.com/rosyfiles) - [EQOA_Addons](https://github.com/rosyfiles/EQOA_Addons)
-- [devin103](https://github.com/devin103) - [EQOA_Creator](https://github.com/devin103/EQOA_Creator), [EQOA-Frontiers-ISO-Patch](https://github.com/devin103/EQOA-Frontiers-ISO-Patch), [EQOA-Prototype-Server](https://github.com/devin103/EQOA-Prototype-Server)
-- [Jadiction](https://github.com/Jadiction) - [EQOA-Data](https://github.com/Jadiction/EQOA-Data)
-- [DabDavis](https://github.com/DabDavis) - [eqoa-esf-tools](https://github.com/DabDavis/eqoa-esf-tools), [eqoa-pipeline](https://github.com/DabDavis/eqoa-pipeline)
-- [userrnx](https://github.com/userrnx) - [EQOA-Ranix](https://github.com/userrnx/EQOA-Ranix)
-- [joukop](https://github.com/joukop) - [EQOA-server](https://github.com/joukop/EQOA-server), [ESF-file-format](https://github.com/joukop/ESF-file-format)
-- [eqoa](https://github.com/eqoa) - [eqoa.github.io](https://github.com/eqoa/eqoa.github.io)
-- [EQOAReturnHome](https://github.com/EQOAReturnHome) - [EQOAGameServer](https://github.com/EQOAReturnHome/EQOAGameServer)
-- [Dexr1te](https://github.com/Dexr1te) - [eqoazyc-api](https://github.com/Dexr1te/eqoazyc-api)
-- [Faxonation2](https://github.com/Faxonation2) - [Hagley](https://github.com/Faxonation2/Hagley)
-- [Randall-Adams](https://github.com/Randall-Adams) - [Kairen](https://github.com/Randall-Adams/Kairen)
-- [unenergizer](https://github.com/unenergizer) - [OpenEQOA](https://github.com/unenergizer/OpenEQOA)
-- [trevormorg](https://github.com/trevormorg) - [tech-eqoakv](https://github.com/trevormorg/tech-eqoakv)
-- [skulkingfox](https://github.com/skulkingfox) - [eqoa](https://github.com/skulkingfox/eqoa)
