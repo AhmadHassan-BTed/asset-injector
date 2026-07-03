@@ -1,6 +1,6 @@
 <div align="center">
 
-# Asset Injector
+# EQIA: Asset Injector
 
 ### EQOA Character Restoration & Hybrid Graft Pipeline
 
